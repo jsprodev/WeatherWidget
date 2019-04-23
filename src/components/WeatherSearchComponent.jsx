@@ -19,11 +19,27 @@ class WeatherSearchComponent extends Component {
     this.apikey
   }&q=`;
 
+  searchCity(url) {
+    fetch(url)
+      .then(res => {
+        return res.json();
+      })
+      .then(json => {
+        console.log(json);
+      })
+      .catch(e => {
+        console.log(e);
+        return e;
+      });
+  }
+
   onChange(e) {
-    if (e.target.value.length >= 3) {
-      //   console.log(e.target.value);
+    let url = "";
+    if (e.target.value.length >= 4) {
       this.queryString = e.target.value;
-      console.log(this.url + this.queryString);
+      url = this.url + this.queryString;
+      console.log(url);
+      this.searchCity(url);
     }
     this.setState({
       inputvalue: e.target.value
