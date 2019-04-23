@@ -17,14 +17,13 @@ class WeatherSearchComponent extends Component {
   queryString = "";
   url = `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${
     this.apikey
-  }&q=${this.queryString}`;
+  }&q=`;
 
   onChange(e) {
     if (e.target.value.length >= 3) {
       //   console.log(e.target.value);
       this.queryString = e.target.value;
-      console.log(this.url);
-      console.log(this.queryString);
+      console.log(this.url + this.queryString);
     }
     this.setState({
       inputvalue: e.target.value
